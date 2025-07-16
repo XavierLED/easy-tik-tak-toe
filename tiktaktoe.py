@@ -1,17 +1,34 @@
-map = [["."]*3]*3
+map = [['.' for i in range(3)] for i in range(3)]
+
+
 def main():
     player = ['x', 'o']
     i = 0
-    while not win(x) and not win(o) and not isTie():
-        i -= 1
-        square = input("player " + player[i] + "make your move (example: 1,2 for first row, second column):")
-        square = square.split()
-        square[0], square[1] = int(square[0]), int(square[1])
+    printMap()
+    
+    while not win('x') and not win('o') and not isTie():
+        i = i % 2
 
+        square = input("player " + player[i] + " make your move (example: '1 2' for first row, second column):")
+        square = square.split()
+        square[0], square[1] = int(square[0]) - 1, int(square[1]) - 1
+        
         place(square, player[i])
+        i += 1
+        
+def printMap():
+    for row in map:
+        for column in row:
+            print(column + '\t', end = '')
+        print('\n')
+
+
 
 def place(square, player):
-    map[square[0], square[1]] = player
+    map[square[0]][square[1]] = player
+    printMap()
+
+
 
 def win(player):
     if winInColumn(player):
@@ -22,7 +39,9 @@ def win(player):
         return True
     else:
         return False
-    
+
+
+
 def winInColumn(player):
     win = [player]*3
     window = ['.']*3
@@ -34,6 +53,8 @@ def winInColumn(player):
         if window == win:
             return True
     return False
+
+
 
 
 def winInRow(player):
@@ -68,9 +89,13 @@ def winInDiagonals(player):
     return False
 
 
+
+
 def isTie():
     for row in map:
         for column in row:
-            if map[row][column] == '.':
+            if column == '.':
                 return False
     return True
+
+main()
