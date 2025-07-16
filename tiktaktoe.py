@@ -8,11 +8,16 @@ def main():
     
     while not win('x') and not win('o') and not isTie():
         i = i % 2
-
-        square = input("player " + player[i] + " make your move (example: '1 2' for first row, second column):")
-        square = square.split()
-        square[0], square[1] = int(square[0]) - 1, int(square[1]) - 1
+        square = None
         
+        while True:
+            square = input("player " + player[i] + " make your move (example: '1 2' for first row, second column):")
+            square = square.split()
+            square[0], square[1] = int(square[0]) - 1, int(square[1]) - 1
+            
+            if map[square[0]][square[1]] == '.':
+                break
+
         place(square, player[i])
         i += 1
         
