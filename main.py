@@ -2,18 +2,25 @@ import tkinter as tk
 import tiktaktoe as ttt
 
 map = [['.' for i in range(3)] for i in range(3)]
+player = ['x','o']
 
 
 root = tk.Tk()
 root.title("Tik Tak Toe")
 
-def onClick():
-    btn.config(text="clicked") #this shit doesnt work lol
+i = 0
+def onClick(row, column):
+    global i 
+    i = i % 2
+
+    map[row][column] = player[i]
+    i += 1 
+    printMap()
 
 def printMap():
     for i in range(3):
         for j in range(3):
-            bnt = tk.Button(root, text=map[i][j], command=onClick)
+            bnt = tk.Button(root, text=map[i][j], command= lambda i=i,j=j: onClick(i, j))
             bnt.grid(row=i, column=j)
 
 printMap()
