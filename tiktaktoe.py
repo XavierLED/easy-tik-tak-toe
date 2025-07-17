@@ -13,7 +13,7 @@ def win(player, map):
 
 def winInColumn(player, map):
     win = [player]*3
-    window = ['.']*3
+    window = ['.' for i in range(3)]
 
     for column in range(3):
         window[0] = map[0][column]

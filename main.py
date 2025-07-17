@@ -7,8 +7,6 @@ player = ['x','o']
 
 root = tk.Tk()
 root.title("Tik Tak Toe")
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
 
 i = 0
 def onClick(row, column):
@@ -22,9 +20,8 @@ def onClick(row, column):
         exit()
 
     elif ttt.isTie(map):
-        exit()
-
-    else:
+        label = tk.Label(text="There is a tie!")
+        label.grid(row=3, column = 0, columnspan=3, sticky="ew")
         printMap()
 
 def printMap():
@@ -34,8 +31,4 @@ def printMap():
             bnt.grid(row=i, column=j, sticky="ns")
 
 printMap()
-if ttt.win('x', map) or ttt.win('o', map):
-    exit()
-elif ttt.isTie(map):
-    exit()
 root.mainloop()
