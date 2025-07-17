@@ -1,17 +1,17 @@
 
-def win(player):
-    if winInColumn(player):
+def win(player, map):
+    if winInColumn(player, map):
         return True
-    elif winInRow(player):
+    elif winInRow(player, map):
         return True
-    elif winInDiagonals(player):
+    elif winInDiagonals(player, map):
         return True
     else:
         return False
 
 
 
-def winInColumn(player):
+def winInColumn(player, map):
     win = [player]*3
     window = ['.']*3
 
@@ -26,7 +26,7 @@ def winInColumn(player):
 
 
 
-def winInRow(player):
+def winInRow(player, map):
     win = [player] *3
     window = ['.']*3
 
@@ -41,7 +41,7 @@ def winInRow(player):
     return False
 
 
-def winInDiagonals(player):
+def winInDiagonals(player, map):
     win = [player]*3
     window = ['.']*3
 
@@ -60,7 +60,7 @@ def winInDiagonals(player):
 
 
 
-def isTie():
+def isTie(map):
     for row in map:
         for column in row:
             if column == '.':
