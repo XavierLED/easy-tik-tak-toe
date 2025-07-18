@@ -17,12 +17,14 @@ def onClick(row, column):
     i += 1
 
     if ttt.win('x', map) or ttt.win('o', map):
-        exit()
+        label = tk.Label(text="A winner has been found!")
+        label.grid(row=3, column = 0, columnspan=3, sticky="ew")
+
 
     elif ttt.isTie(map):
         label = tk.Label(text="There is a tie!")
         label.grid(row=3, column = 0, columnspan=3, sticky="ew")
-        printMap()
+    printMap()
 
 def printMap():
     for i in range(3):

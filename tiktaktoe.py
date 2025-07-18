@@ -13,7 +13,7 @@ def win(player, map):
 
 def winInColumn(player, map):
     win = [player]*3
-    window = ['.' for i in range(3)]
+    window = ['.']*3
 
     for column in range(3):
         window[0] = map[0][column]
@@ -28,8 +28,7 @@ def winInColumn(player, map):
 
 def winInRow(player, map):
     win = [player] *3
-    window = ['.']*3
-
+    window =['.']*3
     for row in range(3):
         window[0] = map[row][0]
         window[1] = map[row][1]
@@ -43,8 +42,7 @@ def winInRow(player, map):
 
 def winInDiagonals(player, map):
     win = [player]*3
-    window = ['.']*3
-
+    window =['.']*3 
     for i in range(3):
         window = map[i][i]
     if win == window:
