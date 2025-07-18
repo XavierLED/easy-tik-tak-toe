@@ -44,12 +44,14 @@ def winInDiagonals(player, map):
     win = [player]*3
     window =['.']*3 
     for i in range(3):
-        window = map[i][i]
+        window[i] = map[i][i]
+
     if win == window:
         return True
     
     for i in range(3):
-        window = map[i][2 - i]
+        window[i] = map[i][2 - i]
+
     if win == window:
         return True
     
