@@ -9,6 +9,7 @@ root = tk.Tk()
 root.title("Tik Tak Toe")
 
 i = 0
+#now its time to add the bot to play against
 def onClick(row, column):
     global i 
     i = i % 2
