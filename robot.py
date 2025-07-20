@@ -12,11 +12,11 @@ def robotsMove(map):
                 place(row, column, map)
                 failure = [row, column]
 
-            if ttt.win(robot, map):
-                return row, column
-           
-            else:
-                remove(row, column, map)
+                if ttt.win(robot, map):
+                    return row, column
+               
+                else:
+                    remove(row, column, map)
     
     return failure
 
