@@ -1,10 +1,12 @@
 import tiktaktoe as ttt
 
+robot = 'o'
+player = 'x'
 def robotsMove(map):
     failure = [0, 0]
     
-    for row in map:
-        for column in row:
+    for row in range(len(map)):
+        for column in range(len(map[0])):
             
             if map[row][column] == '.':
                 place(row, column, map)

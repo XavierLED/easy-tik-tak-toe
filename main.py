@@ -1,30 +1,34 @@
 import tkinter as tk
 import tiktaktoe as ttt
+import robot as rb
 
 map = [['.' for i in range(3)] for i in range(3)]
-player = ['x','o']
-
+player = 'x'
+robot = 'o'
 
 root = tk.Tk()
 root.title("Tik Tak Toe")
 
-i = 0
 #now its time to add the bot to play against
 def onClick(row, column):
-    global i 
-    i = i % 2
-
-    map[row][column] = player[i]
-    i += 1
-
-    if ttt.win('x', map) or ttt.win('o', map):
-        label = tk.Label(text="A winner has been found!")
+    map[row][column] = player
+    
+    if ttt.win(player, map):
+        label = tk.Label(text="Youre the Winner!")
         label.grid(row=3, column = 0, columnspan=3, sticky="ew")
 
 
     elif ttt.isTie(map):
         label = tk.Label(text="There is a tie!")
         label.grid(row=3, column = 0, columnspan=3, sticky="ew")
+
+    moveRobot = rb.robotsMove(map)
+    map[moveRobot[0]][moveRobot[1]] = robot
+
+    if ttt.win(robot, map):
+        label = tk.Label(text="Robot is the Winner")
+        label.grid(row=3, column=0, columnspan=3, sticky="ew")
+
     printMap()
 
 def printMap():
@@ -33,5 +37,7 @@ def printMap():
             bnt = tk.Button(root, text=map[i][j], command= lambda i=i,j=j: onClick(i, j), width=20, height=10)
             bnt.grid(row=i, column=j, sticky="ns")
 
+
 printMap()
 root.mainloop()
+
